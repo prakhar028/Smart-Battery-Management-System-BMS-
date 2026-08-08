@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 43.1,
+      "left": -24.2,
+      "rotate": 180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot1",
+      "top": -140,
+      "left": -180,
+      "attrs": { "label": "Cell 1" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot2",
+      "top": -140,
+      "left": -60,
+      "attrs": { "label": "Cell 2" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot3",
+      "top": -140,
+      "left": 60,
+      "attrs": { "label": "Cell 3" }
+    },
+    { "type": "wokwi-lcd1602", "id": "lcd", "top": -130, "left": 200, "attrs": { "pins": "i2c" } },
+    {
+      "type": "wokwi-led",
+      "id": "led_green",
+      "top": 120,
+      "left": 220,
+      "attrs": { "color": "green" }
+    },
+    { "type": "wokwi-led", "id": "led_red", "top": 200, "left": 220, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 157.55,
+      "left": 278.4,
+      "attrs": { "value": "220" }
+    },
+    { "type": "wokwi-resistor", "id": "r2", "top": 240, "left": 280, "attrs": { "value": "220" } },
+    { "type": "wokwi-relay-module", "id": "relay", "top": 280, "left": -40, "attrs": {} }
+  ],
+  "connections": [
+    [ "led_green:A", "r1:1", "green", [ "v0" ] ],
+    [ "led_red:A", "r2:1", "green", [ "v0" ] ],
+    [ "led_green:C", "esp:GND.2", "black", [ "v20.4", "h-14.2", "v-86.4" ] ],
+    [ "led_red:C", "esp:GND.2", "black", [ "v7.6", "h-33.4", "v-153.6" ] ],
+    [ "relay:GND", "esp:GND.2", "black", [ "h107.2", "v-21", "h124.8", "v-182.4" ] ],
+    [ "lcd:GND", "esp:GND.2", "black", [ "h-12", "v-55.6", "h201.6", "v0", "h144", "v19.2" ] ],
+    [ "pot3:GND", "esp:GND.2", "black", [ "v0" ] ],
+    [ "pot2:GND", "esp:GND.2", "black", [ "v109.9", "h136.6", "v67.2" ] ],
+    [ "pot1:GND", "esp:GND.2", "black", [ "v100.3", "h266.2", "v76.8" ] ],
+    [ "esp:D12", "r1:2", "green", [ "h277.4", "v-1.5" ] ],
+    [ "esp:D14", "r2:2", "red", [ "h95", "v74.5", "h182.4" ] ],
+    [ "lcd:VCC", "esp:VIN", "#8f4814", [ "h-50.4", "v174.9", "h-9.6" ] ],
+    [ "esp:D21", "lcd:SDA", "green", [ "h76.1", "v65.4", "h134.4", "v-326.4" ] ],
+    [ "esp:D22", "lcd:SCL", "green", [ "h66.5", "v46.1", "h134.4", "v-326.4" ] ],
+    [ "esp:3V3", "pot1:VCC", "red", [ "v-2.2", "h-96.7", "v-144" ] ],
+    [ "pot2:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "pot3:VCC", "esp:3V3", "red", [ "v138.7", "h15.8", "v9.6", "h-144" ] ],
+    [ "esp:D32", "pot1:SIG", "blue", [ "h8.6", "v-155.7", "h-220.8" ] ],
+    [ "esp:D34", "pot2:SIG", "violet", [ "h18.2", "v-184.4", "h-115.2" ] ],
+    [ "pot3:SIG", "esp:D35", "gold", [ "v253.9", "h45" ] ],
+    [ "esp:VIN", "relay:VCC", "#8f4814", [ "h66.2", "v189.8", "h-182.4" ] ],
+    [ "esp:D27", "relay:IN", "purple", [ "h85.4", "v218.9", "h-201.6" ] ]
+  ],
+  "dependencies": {}
+}
